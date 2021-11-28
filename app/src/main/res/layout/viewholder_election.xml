@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.text.DateFormat" />
+
+        <variable
+            name="election"
+            type="com.example.android.politicalpreparedness.election.model.ElectionModel" />
+
+        <variable
+            name="listener"
+            type="com.example.android.politicalpreparedness.election.adapter.ElectionListener" />
+
+        <variable
+            name="dateFormatter"
+            type="DateFormat" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@{@string/election_name(election.name)}"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{()->listener.onClick(election)}"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/election_name"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{election.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem[3]" />
+
+        <TextView
+            android:id="@+id/election_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{dateFormatter.format(election.electionDay)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/election_name"
+            tools:text="@tools:sample/lorem[3]" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

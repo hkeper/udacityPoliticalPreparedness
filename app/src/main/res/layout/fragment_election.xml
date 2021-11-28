@@ -5,6 +5,13 @@
 
     <!-- TODO: Add node to connect Election ViewModel -->
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,6 +20,65 @@
         <!-- TODO: Add Upcoming Election Recycler and Header -->
 
         <!-- TODO: Add Saved Election Recycler and Header -->
+
+        <TextView
+            android:id="@+id/upcomingElectionsRecyclerViewHeader"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:singleLine="true"
+            android:text="@string/upcoming_elections"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/upcomingElectionsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            listData="@{viewModel.upcomingElections}"
+            app:layout_constraintBottom_toTopOf="@+id/center_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingElectionsRecyclerViewHeader"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/savedElectionsRecyclerViewHeader"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:singleLine="true"
+            android:text="@string/saved_elections"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/center_guideline" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/savedElectionsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            listData="@{viewModel.savedElections}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/savedElectionsRecyclerViewHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

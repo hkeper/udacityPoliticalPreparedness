@@ -14,5 +14,48 @@
 
         <!-- TODO: Add Button to navigate to representatives. -->
 
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/logo_desc"
+            app:layout_constraintBottom_toTopOf="@+id/upcomingButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ballot_logo" />
+
+        <Button
+            android:id="@+id/upcomingButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/upcoming_elections"
+            android:contentDescription="@string/upcoming_elections"
+            app:layout_constraintBottom_toTopOf="@+id/representativeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:backgroundTint="?colorPrimary"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/representativeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_find_my_representatives"
+            android:contentDescription="@string/button_find_my_representatives"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:backgroundTint="?colorPrimary"
+            android:textColor="@color/white"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
