@@ -49,7 +49,8 @@ dependencies {
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
@@ -62,6 +63,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit: $version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"
@@ -69,12 +71,16 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:$version_moshi"
 
     // Glide
-    //TODO: Add Glide Implementation
     implementation "com.github.bumptech.glide:glide:$version_glide"
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //Room
     implementation "androidx.room:room-runtime:$version_room"
     kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
 
     // Location
     implementation "com.google.android.gms:play-services-location:$version_play_services_location"
@@ -83,8 +89,37 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$version_koin"
 
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espressoVersion"
+
+    implementation "androidx.fragment:fragment-ktx:$version_fragment"
+    implementation "androidx.activity:activity:$version_activity"
+    implementation "androidx.activity:activity-ktx:$version_activity"
+
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:$version_junit"
+    testImplementation "org.hamcrest:hamcrest-all:$version_hamcrest"
+    testImplementation "androidx.arch.core:core-testing:$version_arch_testing"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_kotlin_coroutines"
+    testImplementation "org.robolectric:robolectric:$version_robolectric"
+    testImplementation "com.google.truth:truth:$version_truth"
+    testImplementation "org.mockito:mockito-core:$version_mockito"
+
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test:core-ktx:$version_androidx_test_core"
+    testImplementation "androidx.test.ext:junit-ktx:$version_androidx_test_ext_kotlin_runner"
+    testImplementation "androidx.test:rules:$version_androidx_test_rules"
+
+    androidTestImplementation "androidx.test:core-ktx:$version_androidx_test_core"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$version_androidx_test_ext_kotlin_runner"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_kotlin_coroutines"
+    androidTestImplementation "androidx.test:rules:$version_androidx_test_rules"
+    androidTestImplementation "androidx.room:room-testing:$version_room"
+    androidTestImplementation "androidx.arch.core:core-testing:$version_arch_testing"
+    androidTestImplementation "org.mockito:mockito-core:$version_mockito"
+
 }

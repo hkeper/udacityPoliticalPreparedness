@@ -5,8 +5,11 @@ import android.animation.AnimatorListenerAdapter
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
+import com.example.android.politicalpreparedness.election.model.ElectionModel
 
 @BindingAdapter("setVisible")
 fun setVisible(view: View, count: Int?) {
@@ -15,6 +18,12 @@ fun setVisible(view: View, count: Int?) {
     } else {
         view.visibility = View.GONE
     }
+}
+
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<ElectionModel>?) {
+    val adapter = recyclerView.adapter as ElectionListAdapter
+    adapter.submitList(data)
 }
 
 @BindingAdapter("showError")

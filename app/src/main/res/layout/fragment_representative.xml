@@ -3,117 +3,174 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:motion="http://schemas.android.com/tools">
 
-    <!-- TODO: Add data binding node -->
+    <data>
 
-    <!-- TODO: Add motion scene to hide form on vertical scroll. -->
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
+    </data>
+
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/representative_container"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        app:layoutDescription="@xml/fragment_representative_scene">
 
-        <!-- TODO: Add visual styling and content -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="1.0" />
+
         <TextView
             android:id="@+id/search_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:text="@string/representative_search"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Add data binding value -->
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
             android:autofillHints=""
+            android:hint="@string/address_line_1"
             android:inputType="textPostalAddress"
+            android:text="@={viewModel.line1}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
 
-        <!-- TODO: Add data binding value -->
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:autofillHints=""
+            android:hint="@string/address_line_2"
             android:inputType="textPostalAddress"
+            android:text="@={viewModel.line2}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
 
-        <!-- TODO: Add data binding value -->
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
+            android:hint="@string/city"
             android:inputType="textPostalAddress"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@={viewModel.city}"
             app:layout_constraintEnd_toStartOf="@id/state"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
 
-        <!-- TODO: Add default values from provided resources  -->
-        <!-- TODO: Add data binding value -->
-        <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
+            stateValue="@{viewModel.state}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints=""
+            android:entries="@array/states"
             android:inputType="textPostalAddress"
-            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/city"
-            app:layout_constraintBottom_toBottomOf="@id/city"/>
+            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintTop_toTopOf="@id/city" />
 
-        <!-- TODO: Add data binding value -->
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
+            android:hint="@string/zip"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="5"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@={viewModel.zip}"
             app:layout_constraintEnd_toEndOf="@id/city"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />
 
-        <!-- TODO: Add visual styling and label -->
         <Button
             android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="?colorPrimary"
+            android:onClick="@{()->viewModel.searchForMyRepresentatives()}"
+            android:text="@string/find_my_representatives"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/zip" />
 
-        <!-- TODO: Add visual styling and content -->
         <Button
             android:id="@+id/button_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="?colorPrimary"
+            android:text="@string/use_my_location"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/representative_title"
+            android:textSize="@dimen/text_size_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/my_representatives_header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location" />
 
-        <!-- TODO: Add Representatives RecyclerView -->
-
-        <!-- TODO: Add visual styling and content -->
-        <TextView
-            android:id="@+id/list_placeholder"
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/representative_delete"
+            representativeData="@{viewModel.representatives}"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:textAlignment="center"
-            android:visibility="gone"
-            motion:visibilityMode="ignore"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_title"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            motion:visibilityMode="ignore" />
+
+        <TextView
+            android:id="@+id/representative_title_big"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:text="@string/my_representatives_header"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/representative_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/representative_title" />
+
+        <ProgressBar
+            android:id="@+id/representatives_loading"
+            showProgress="@{viewModel.dataLoading}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/representative_delete"
+            app:layout_constraintEnd_toEndOf="@+id/representative_delete"
+            app:layout_constraintStart_toStartOf="@+id/representative_delete"
+            app:layout_constraintTop_toTopOf="@id/representative_delete" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

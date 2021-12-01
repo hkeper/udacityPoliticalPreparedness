@@ -7,5 +7,29 @@
     <string name="saved_elections">Saved Elections</string>
     <string name="remove_from_saved">Unfollow election</string>
     <string name="add_to_saved">Follow election</string>
+    <string name="election_name">%s</string>
+    <string name="location_permission_denied">Location permission denied!</string>
+    <string name="failed_load_voter_info">Failed to load details using your location!</string>
+    <string name="failed_get_address_from_location">Can\'t get address for you location</string>
+    <string name="representative_search">Representative Search</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="find_my_representatives">Find my representatives</string>
+    <string name="use_my_location">Use my location</string>
+    <string name="my_representatives_header">My Representatives</string>
+    <string name="missing_first_line_address">Enter first line address</string>
+    <string name="missing_city">Enter city</string>
+    <string name="missing_state">State field is required</string>
+    <string name="missing_zip">Enter zip code</string>
+    <string name="voting_location">&lt;a href="%s">Voting locations&lt;/a></string>
+    <string name="ballot_information">&lt;a href="%s">Ballot information&lt;/a></string>
+    <string name="representative_no">%s from %s</string>
+    <string name="representative_fb">%s facebook page</string>
+    <string name="representative_twitter">%s twitted</string>
+    <string name="representative_www">%s web page</string>
+    <string name="no_inf_for_address">No information for this address!</string>
+    <string name="address">Address</string>
 
 </resources>

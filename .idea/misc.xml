@@ -6,8 +6,10 @@
         <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/activity_main.xml" value="0.2210144927536232" />
         <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/fragment_election.xml" value="0.2210144927536232" />
         <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/fragment_launch.xml" value="0.2210144927536232" />
-        <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/fragment_voter_info.xml" value="0.2210144927536232" />
+        <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/fragment_voter_info.xml" value="0.20588235294117646" />
         <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/viewholder_election.xml" value="0.2210144927536232" />
+        <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/layout/viewholder_representative.xml" value="0.2105978260869565" />
+        <entry key="..\:/Android/Udacity/MyProjects/Political_Preparedness/app/src/main/res/xml/fragment_voter_info_scene.xml" value="0.2105978260869565" />
       </map>
     </option>
   </component>

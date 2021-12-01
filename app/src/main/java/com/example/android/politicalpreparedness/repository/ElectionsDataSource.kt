@@ -11,7 +11,7 @@ interface ElectionDataSource {
     suspend fun getElections(): Result<List<Election>>
     suspend fun saveElections(elections: List<Election>)
     suspend fun markAsSaved(election: Election)
-    suspend fun deleteAll()
-    suspend fun getDetails(electionId: Int, address: String): Result<State?>
+    suspend fun deleteAllElections()
+    suspend fun getElectionDetails(electionId: Int, address: String): Result<State?>
     suspend fun getRepresentatives(address: Address): Result<RepresentativeResponse>
 }

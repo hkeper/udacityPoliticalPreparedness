@@ -40,7 +40,7 @@ class ElectionsRepository (
                 val elections = networkDataSource.getElections()
                 if (elections is Result.Success) {
                     val localElections = localDataSource.getElections()
-                    localDataSource.deleteAll()
+                    localDataSource.deleteAllElections()
                     if (localElections is Result.Success) {
                         val saved = localElections.data.filter { it.saved }
                         elections.data.map { online ->
@@ -77,7 +77,7 @@ class ElectionsRepository (
     suspend fun getElectionDetails(electionId: Int, address: String): Result<State?> {
         wrapEspressoIdlingResource {
             return withContext(ioDispatcher) {
-                networkDataSource.getDetails(electionId, address)
+                networkDataSource.getElectionDetails(electionId, address)
             }
         }
     }

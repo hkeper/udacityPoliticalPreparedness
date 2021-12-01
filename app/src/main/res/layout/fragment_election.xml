@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Add node to connect Election ViewModel -->
-
     <data>
 
         <variable
@@ -17,10 +15,6 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
-        <!-- TODO: Add Upcoming Election Recycler and Header -->
-
-        <!-- TODO: Add Saved Election Recycler and Header -->
-
         <TextView
             android:id="@+id/upcomingElectionsRecyclerViewHeader"
             android:layout_width="0dp"
@@ -32,21 +26,49 @@
             android:singleLine="true"
             android:text="@string/upcoming_elections"
             android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/upcoming_refresh"
+            refreshing="@{viewModel.dataLoading}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/center_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingElectionsRecyclerViewHeader">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/upcomingElectionsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             listData="@{viewModel.upcomingElections}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/center_guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upcomingElectionsRecyclerViewHeader"
             app:layout_constraintVertical_bias="1.0" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ImageView
+            android:id="@+id/status_image"
+            showError="@{viewModel.upcomingElections.size()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:src="@drawable/ic_connection_error"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/center_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingElectionsRecyclerViewHeader"
+            app:tint="@color/colorAccent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/center_guideline"
@@ -66,6 +88,7 @@
             android:singleLine="true"
             android:text="@string/saved_elections"
             android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/center_guideline" />
@@ -75,6 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             listData="@{viewModel.savedElections}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
